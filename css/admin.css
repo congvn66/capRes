@@ -1,0 +1,133 @@
+/*
+    author: congvn88
+    theme: admin
+    version: 1.0
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper{
+    padding: 1%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.clearfix{
+    float: none;
+    clear: both;
+}
+
+.tbl-full{
+    width: 100%;
+}
+
+.tbl-30{
+    width: 30%;
+}
+
+table tr th{
+    border-bottom: 1px solid black;
+    padding: 1%;
+    text-align:left;
+}
+
+table tr td{
+    padding: 1%;
+}
+
+.button-primary{
+    background-color: #1e90ff;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button-primary:hover{
+    background-color:#3742fa;
+}
+
+.button-secondary{
+    background-color: #4cd137;
+    padding: 1%;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button-secondary:hover{
+    background-color:#44bd32;
+}
+
+.button-danger{
+    background-color: #e84118;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.button-danger:hover{
+    background-color:#c23616;
+}
+
+.success{
+    color: #44bd32;
+}
+
+.error{
+    color: #e84118;
+}
+
+/* css for menu */
+
+.menu{
+    border-bottom: 1px solid orange;
+}
+
+.menu ul{
+    list-style-type: none;
+}
+
+.menu ul li{
+    display: inline;
+    padding: 1%;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.menu ul li a:hover{
+    color: #d35400;
+}
+
+/* css for main content */
+.main-content{
+    background-color: #ecf0f1;
+    padding: 3% 0;
+}
+
+.col-11{
+    width: 18%;
+    background-color: white;
+    margin: 1%;
+    padding: 2%;
+    float: left;
+}
+
+/* css for footer */
+.footer{
+    background-color: #e67e22;
+    color: white;
+}
