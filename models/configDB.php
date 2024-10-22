@@ -25,6 +25,7 @@
         }
 
         public function getData() {
+           
             if($this->res) {
                 $data = mysqli_fetch_array($this->res);
             } else {
@@ -33,8 +34,10 @@
             return $data;
         }
 
-        public function getAllData() {
-            if (!$this->res) {
+        public function getAllData($tbl) {
+            $sql = "SELECT * FROM $tbl";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
                 $data = 0;
             } else {
                 while($datas = $this->getData()) {
@@ -42,6 +45,15 @@
                 }
             }
             return $data;
+        }
+
+        public function cnt_rows(){
+            if ($this->res) {
+                $num = mysqli_num_rows($this->res);
+            } else {
+                $num = 0;
+            }
+            return $num;
         }
 
         public function insertDataAdmin($full_name, $username, $password) {
