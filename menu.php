@@ -10,7 +10,7 @@
         <div class="menu text-center">
             <div class="wrapper">
                 <ul>
-                    <li><a href="index.php?controller=home">home</a></li>
+                    <li><a href="index.php">home</a></li>
                     <li><a href="index.php?controller=admin&action=list">admin</a></li>
                     <li><a href="">foods</a></li>
                     <li><a href="">chefs</a></li>

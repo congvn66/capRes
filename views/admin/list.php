@@ -16,16 +16,14 @@
             <?php
                 $stt = 1;
                 foreach($data as $value){
-                
-                
             ?>
             <tr>
                 <td><?php echo $stt;?></td>
                 <td><?php echo $value['full_name'];?></td>
                 <td><?php echo $value['username'];?></td>
                 <td>
-                    <a href="" class="button-secondary"> edit </a>
-                    <a href="" class="button-danger"> delete </a>
+                    <a href="index.php?controller=admin&action=edit&id=<?php echo $value['id'];?>" class="button-secondary"> edit </a>
+                    <a href="index.php?controller=admin&action=delete&id=<?php echo $value['id'];?>" class="button-danger"> delete </a>
                 </td>
             </tr>
             <?php

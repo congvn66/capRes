@@ -14,7 +14,7 @@
             require_once('controller/admin/index.php');
             break;
         }
-        case 'home':{
+        default:{
             require_once('controller/home/index.php');
             break;
         }

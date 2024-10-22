@@ -1,6 +1,7 @@
 <?php
     //include "models/configDB.php";
-    $data = [];
+    
+    
      if (isset($_GET['action'])){
         $action = $_GET['action'];
     } else {
@@ -22,6 +23,22 @@
             break;
         }
         case 'edit':{
+            if(isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $tbl = "admin";
+                $dataOnId = [];
+                $dataOnId = $db->getDataFromID($tbl, $id);
+
+                if(isset($_POST['edit-admin'])) {
+                    $full_name = $_POST['full_name'];
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
+
+                    if($db->updateDataAdmin($id, $full_name, $username, $password)){
+                        header('location: index.php?controller=admin&action=list');
+                    }
+                }
+            }
             require_once('views/admin/edit-admin.php');
             break;
         }
@@ -31,6 +48,7 @@
         }
         case 'list':{
             $tbl = "admin";
+            $data = [];
             $data = $db->getAllData($tbl);
             require_once('views/admin/list.php');
             break;  
