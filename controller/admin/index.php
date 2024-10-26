@@ -43,9 +43,20 @@
             break;
         }
         case 'delete':{
-            require_once('views/admin/delete-admin.php');
+            //require_once('views/admin/delete-admin.php');
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                $tbl = "admin";
+
+                if($db->delete($id, $tbl)) {
+                    header('location: index.php?controller=admin&action=list');
+                }
+            } else {
+                header('location: index.php?controller=admin&action=list');
+            }
             break;
         }
+
         case 'list':{
             $tbl = "admin";
             $data = [];
@@ -53,6 +64,19 @@
             require_once('views/admin/list.php');
             break;  
         }
+        
+        case 'search':{
+            if (isset($_GET['name'])) {
+                $key = $_GET['name'];
+                $tbl = "admin";
+                
+                $dataSearch = [];
+                $dataSearch = $db->search($tbl, $key);
+            }
+            require_once('views/admin/search-admin.php');
+            break;
+        }
+
         default:{
             require_once('views/admin/list.php');
             break;

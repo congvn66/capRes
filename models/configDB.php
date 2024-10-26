@@ -77,9 +77,22 @@
             return $this->execute($sql);
         }
 
-        public function deleteAdmin($id) {
-            $sql = "DELETE FROM admin WHERE id = '$id'";
+        public function delete($id, $tbl) {
+            $sql = "DELETE FROM $tbl WHERE id = '$id'";
             return $this->execute($sql);
+        }
+
+        public function search($tbl, $key) {
+            $sql = "SELECT * FROM $tbl WHERE full_name REGEXP '$key' ORDER BY id";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
         }
     }
 ?>

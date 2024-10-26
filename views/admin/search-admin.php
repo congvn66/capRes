@@ -28,7 +28,7 @@
             </tr>
             <?php
                 $stt = 1;
-                foreach($data as $value){
+                foreach($dataSearch as $value){
             ?>
             <tr>
                 <td><?php echo $stt;?></td>
