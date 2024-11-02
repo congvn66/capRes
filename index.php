@@ -14,6 +14,10 @@
             require_once('controller/admin/index.php');
             break;
         }
+        case 'chef':{
+            require_once('controller/chefs/index.php');
+            break;
+        }
         default:{
             require_once('controller/home/index.php');
             break;

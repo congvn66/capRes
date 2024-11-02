@@ -71,7 +71,7 @@
                 $tbl = "admin";
                 
                 $dataSearch = [];
-                $dataSearch = $db->search($tbl, $key);
+                $dataSearch = $db->searchAdmin($tbl, $key);
             }
             require_once('views/admin/search-admin.php');
             break;

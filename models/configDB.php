@@ -71,9 +71,19 @@
             $sql = "INSERT INTO admin(id, full_name, username, password)VALUES(null, '$full_name', '$username', '$password')";
             return $this->execute($sql);
         }
+
+        public function insertDataChef($chef_name, $salary, $image_name) {
+            $sql = "INSERT INTO chef(chef_id, chef_name, salary, image_name)VALUES(null, '$chef_name', $salary, '$image_name')";
+            return $this->execute($sql);
+        }
         
         public function updateDataAdmin($id, $full_name, $username, $password) {
             $sql = "UPDATE admin SET full_name = '$full_name', username = '$username', password = '$password' WHERE id = '$id'";
+            return $this->execute($sql);
+        }
+
+        public function updateDataChef($id, $chef_name, $salary) {
+            $sql = "UPDATE chef SET chef_name = '$chef_name', salary = '$salary' WHERE chef_id = '$id'";
             return $this->execute($sql);
         }
 
@@ -82,8 +92,21 @@
             return $this->execute($sql);
         }
 
-        public function search($tbl, $key) {
+        public function searchAdmin($tbl, $key) {
             $sql = "SELECT * FROM $tbl WHERE full_name REGEXP '$key' ORDER BY id";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function searchChef($tbl, $key) {
+            $sql = "SELECT * FROM $tbl WHERE chef_name REGEXP '$key' ORDER BY chef_id";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;

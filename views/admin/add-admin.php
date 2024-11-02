@@ -6,15 +6,15 @@
             <table>
                 <tr>
                     <td>full name: </td>
-                    <td><input type="text" name="full_name" placeholder="your full name"></td>
+                    <td><input type="text" name="full_name" placeholder="your full name" required></td>
                 </tr>
                 <tr>
                     <td>username: </td>
-                    <td><input type="text" name="username" placeholder="your username"></td>
+                    <td><input type="text" name="username" placeholder="your username" required></td>
                 </tr>
                 <tr>
                     <td>password: </td>
-                    <td><input type="password" name="password" placeholder="your password"></td>
+                    <td><input type="password" name="password" placeholder="your password" required></td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
