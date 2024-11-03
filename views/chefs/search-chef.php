@@ -24,6 +24,7 @@
                 <th>No.</th>
                 <th>full name</th>
                 <th>salary</th>
+                <th>image</th>
                 <th>action</th>
             </tr>
             <?php
@@ -31,12 +32,24 @@
                 foreach($dataSearch as $value){
             ?>
             <tr>
-                <td><?php echo $stt;?></td>
-                <td><?php echo $value['chef_name'];?></td>
-                <td><?php echo $value['salary'];?></td>
+                <td><?php echo $stt; ?></td>
+                <td><?php echo $value['chef_name']; ?></td>
+                <td><?php echo $value['salary']; ?></td>
                 <td>
-                    <a href="index.php?controller=chef&action=edit&id=<?php echo $value['chef_id'];?>" class="button-secondary"> edit </a>
-                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=chef&action=delete&id=<?php echo $value['chef_id'];?>" class="button-danger"> delete </a>
+                    <?php
+                    $img_name = $value['image_name'];
+                    if ($img_name != "") {
+                        ?>
+                        <img src="/capy-restaurant/images/chef/<?php echo $img_name; ?>" width="100px" alt="Chef Image">
+                        <?php
+                    } else {
+                        echo "<div>unknown</div>";
+                    }
+                    ?>
+                </td>
+                <td>
+                    <a href="index.php?controller=chef&action=edit&id=<?php echo $value['chef_id']; ?>" class="button-secondary"> edit </a>
+                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=chef&action=delete&id=<?php echo $value['chef_id']; ?>" class="button-danger"> delete </a>
                 </td>
             </tr>
             <?php

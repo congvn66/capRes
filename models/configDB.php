@@ -67,6 +67,17 @@
             return $num;
         }
 
+        public function getDataFromIdChef($id) {
+            $sql = "SELECT * FROM chef WHERE chef_id = $id";
+            $this->execute($sql); 
+            if($this->cnt_rows() != 0) {
+                $data = mysqli_fetch_array($this->res);
+            } else {
+                $data = 0;
+            }
+            return $data;
+        }
+
         public function insertDataAdmin($full_name, $username, $password) {
             $sql = "INSERT INTO admin(id, full_name, username, password)VALUES(null, '$full_name', '$username', '$password')";
             return $this->execute($sql);
@@ -82,13 +93,18 @@
             return $this->execute($sql);
         }
 
-        public function updateDataChef($id, $chef_name, $salary) {
-            $sql = "UPDATE chef SET chef_name = '$chef_name', salary = '$salary' WHERE chef_id = '$id'";
+        public function updateDataChef($id, $chef_name, $salary, $image_name) {
+            $sql = "UPDATE chef SET chef_name = '$chef_name', salary = '$salary', image_name = '$image_name' WHERE chef_id = '$id'";
             return $this->execute($sql);
         }
 
         public function delete($id, $tbl) {
             $sql = "DELETE FROM $tbl WHERE id = '$id'";
+            return $this->execute($sql);
+        }
+
+        public function deleteChef($id) {
+            $sql = "DELETE FROM chef WHERE chef_id = '$id'";
             return $this->execute($sql);
         }
 
