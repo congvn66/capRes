@@ -27,21 +27,25 @@
                 <th>action</th>
             </tr>
             <?php
+            if (empty($dataSearch)) {
+                echo "<tr><td colspan='4' style='text-align: center;'>No admins found.</td></tr>";
+            } else {
                 $stt = 1;
-                foreach($dataSearch as $value){
+                foreach ($dataSearch as $value) {
             ?>
             <tr>
-                <td><?php echo $stt;?></td>
-                <td><?php echo $value['full_name'];?></td>
-                <td><?php echo $value['username'];?></td>
+                <td><?php echo $stt; ?></td>
+                <td><?php echo $value['full_name']; ?></td>
+                <td><?php echo $value['username']; ?></td>
                 <td>
-                    <a href="index.php?controller=admin&action=edit&id=<?php echo $value['id'];?>" class="button-secondary"> edit </a>
-                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=admin&action=delete&id=<?php echo $value['id'];?>" class="button-danger"> delete </a>
+                    <a href="index.php?controller=admin&action=edit&id=<?php echo $value['id']; ?>" class="button-secondary"> edit </a>
+                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=admin&action=delete&id=<?php echo $value['id']; ?>" class="button-danger"> delete </a>
                 </td>
             </tr>
             <?php
-                $stt++;
+                    $stt++;
                 }
+            }
             ?>
         </table>
     </div>

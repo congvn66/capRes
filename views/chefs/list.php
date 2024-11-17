@@ -1,7 +1,7 @@
 <?php include "menu.php"?>
 <div class="main-content">
     <div class="wrapper">
-        <h1>chef management</h1>
+        <h1>chefs management</h1>
         <br><br>
         <div class="search-bar">
             <form action="" method="GET">

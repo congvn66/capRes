@@ -1,14 +1,14 @@
 <?php include "menu.php"?>
 <div class="main-content">
     <div class="wrapper">
-        <h1>chef management</h1>
+        <h1>food management</h1>
         <br><br>
         <div class="search-bar">
             <form action="" method="GET">
                 <table>
                     <tr>
-                        <input type="hidden" name="controller" value="chef">
-                        <td><input type="text" name="name" placeholder="type chef's name" class="search-input"></td>
+                        <input type="hidden" name="controller" value="food">
+                        <td><input type="text" name="name" placeholder="type food's name" class="search-input"></td>
                         <td><input type="submit" value="search" class="search-btn"></td>
                     </tr>
                 </table>
@@ -16,51 +16,50 @@
             </form>
         </div>
         <br><br><br>
-        <!-- button add chef -->
-        <a href="index.php?controller=chef&action=add" class="button-primary">add chef</a>
+        <!-- button add admin -->
+        <a href="index.php?controller=food&action=add" class="button-primary">add food</a>
         <br /><br />
         <table class="tbl-full">
             <tr>
                 <th>No.</th>
-                <th>full name</th>
-                <th>salary</th>
+                <th>title</th>
+                <th>price</th>
                 <th>image</th>
+                <th>description</th>
                 <th>action</th>
             </tr>
             <?php
-            if (empty($dataSearch)) {
-                echo "<tr><td colspan='5' style='text-align: center;'>No chefs found.</td></tr>";
-            } else {
                 $stt = 1;
-                foreach ($dataSearch as $value) {
+                foreach($data as $value){
             ?>
             <tr>
                 <td><?php echo $stt; ?></td>
-                <td><?php echo $value['chef_name']; ?></td>
-                <td><?php echo $value['salary']; ?></td>
+                <td><?php echo $value['name']; ?></td>
+                <td><?php echo $value['price']; ?></td>
                 <td>
                     <?php
                     $img_name = $value['image_name'];
                     if ($img_name != "") {
                         ?>
-                        <img src="/capy-restaurant/images/chef/<?php echo $img_name; ?>" width="100px" alt="Chef Image">
+                        <img src="/capy-restaurant/images/food/<?php echo $img_name; ?>" width="100px" alt="Food Image">
                         <?php
                     } else {
                         echo "<div>unknown</div>";
                     }
                     ?>
                 </td>
+                <td><?php echo $value['description']; ?></td>
                 <td>
-                    <a href="index.php?controller=chef&action=edit&id=<?php echo $value['chef_id']; ?>" class="button-secondary"> edit </a>
-                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=chef&action=delete&id=<?php echo $value['chef_id']; ?>" class="button-danger"> delete </a>
+                    <a href="index.php?controller=food&action=edit&id=<?php echo $value['food_id']; ?>" class="button-secondary"> edit </a>
+                    <a onclick="return confirm('are you sure you want to delete?')" href="index.php?controller=food&action=delete&id=<?php echo $value['food_id']; ?>" class="button-danger"> delete </a>
                 </td>
             </tr>
             <?php
                 $stt++;
                 }
-            }
             ?>
         </table>
     </div>
 </div>
+    
 <?php include "footer.php"?>

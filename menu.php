@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="index.php">home</a></li>
                     <li><a href="index.php?controller=admin&action=list">admin</a></li>
-                    <li><a href="">foods</a></li>
+                    <li><a href="index.php?controller=food&action=list">foods</a></li>
                     <li><a href="index.php?controller=chef&action=list">chefs</a></li>
                     <li><a href="">orders</a></li>
                     <li><a href="">customers</a></li>

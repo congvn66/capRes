@@ -18,6 +18,10 @@
             require_once('controller/chefs/index.php');
             break;
         }
+        case 'food':{
+            require_once('controller/food/index.php');
+            break;
+        }
         default:{
             require_once('controller/home/index.php');
             break;

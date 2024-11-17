@@ -10,17 +10,23 @@
 
     switch($action) {
         case 'add':{
+            $tbl = "chef";
+            $dataOfChefs = [];
+            $dataOfChefs = $db->getAllData($tbl);
             if(isset($_POST['add-food'])){
-                $chef_name = $_POST['chef_name'];
-                $salary = $_POST['salary'];
+                $title = $_POST['food_name'];
+                $description = $_POST['description'];
+                $price = $_POST['price'];
+                $chef = $_POST['chef'];
+                //$chefId = $chef['chef_id'];
                 if (isset($_FILES['image']['name'])) {
                     $image_name = $_FILES['image']['name'];
                     if($image_name != "") {
                         $ext_array = explode('.', $image_name);
                         $ext = end($ext_array);
-                        $image_name = "chef_".rand(000,999).'.'.$ext;
+                        $image_name = "food_".rand(0000,9999).'.'.$ext;
                         $source_path = $_FILES['image']['tmp_name'];
-                        $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/chef/" . $image_name;
+                        $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $image_name;
     
                         $upload = move_uploaded_file($source_path, $destination_path);
     
@@ -35,33 +41,38 @@
                     $image_name = "";
                 }
 
-                if($db->insertDataChef($chef_name, $salary, $image_name)) {
+                if($db->insertDataFood($title, $price, $chef, $image_name, $description)) {
                     $success[] = 'add-success';
                 }
             }
-            require_once('views/chefs/add-chef.php');
+            require_once('views/food/add-food.php');
             break;
         }
         case 'edit':{
+            
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
-                //$tbl = "chef";
                 $dataOnId = [];
-                $dataOnId = $db->getDataFromIdChef($id);
+                $dataOnId = $db->getDataFromIdFood($id);
+                $tbl = "chef";
+                $dataOfChefs = [];
+                $dataOfChefs = $db->getAllData($tbl);
 
-                if(isset($_POST['edit-chef'])) {
-                    $chef_name = $_POST['chef_name'];
-                    $salary = $_POST['salary'];
+                if(isset($_POST['edit-food'])) {
+                    $food_name = $_POST['name'];
+                    $price = $_POST['price'];
                     $current_image = $_POST['current_image'];
+                    $description = $_POST['description'];
+                    $chef = $_POST['chef'];
 
                     if(isset($_FILES['image']['name'])) {
                         $image_name = $_FILES['image']['name'];
                         if($image_name != "") {
                             $ext_array = explode('.', $image_name);
                             $ext = end($ext_array);
-                            $image_name = "chef_".rand(000,999).'.'.$ext;
+                            $image_name = "food_".rand(0000,9999).'.'.$ext;
                             $source_path = $_FILES['image']['tmp_name'];
-                            $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/chef/" . $image_name;
+                            $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $image_name;
         
                             $upload = move_uploaded_file($source_path, $destination_path);
         
@@ -72,7 +83,7 @@
                                 error_log("Failed to move uploaded file to {$destination_path}");
                             }
                             if ($current_image != "") {
-                                $remove_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/chef/" . $current_image;
+                                $remove_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $current_image;
                                 $remove = unlink($remove_path);
                             }
                         } else {
@@ -82,12 +93,13 @@
                         $image_name = $current_image;
                     }
 
-                    if($db->updateDataChef($id, $chef_name, $salary, $image_name)){
-                        header('location: index.php?controller=chef&action=list');
+
+                    if($db->updateDataFood($id, $food_name, $price, $image_name, $chef, $description)){
+                        header('location: index.php?controller=food&action=list');
                     }
                 }
             }
-            require_once('views/chefs/edit-chef.php');
+            require_once('views/food/edit-food.php');
             break;
         }
         case 'delete':{
@@ -96,37 +108,37 @@
                 $id = $_GET['id'];
                 //$tbl = "chef";
 
-                if($db->deleteChef($id)) {
-                    header('location: index.php?controller=chef&action=list');
+                if($db->deleteFood($id)) {
+                    header('location: index.php?controller=food&action=list');
                 }
             } else {
-                header('location: index.php?controller=chef&action=list');
+                header('location: index.php?controller=food&action=list');
             }
             break;
         }
 
         case 'list':{
-            $tbl = "chef";
+            $tbl = "food";
             $data = [];
             $data = $db->getAllData($tbl);
-            require_once('views/chefs/list.php');
+            require_once('views/food/list.php');
             break;  
         }
         
         case 'search':{
             if (isset($_GET['name'])) {
                 $key = $_GET['name'];
-                $tbl = "chef";
+                $tbl = "food";
                 
                 $dataSearch = [];
-                $dataSearch = $db->searchChef($tbl, $key);
+                $dataSearch = $db->searchFood($tbl, $key);
             }
-            require_once('views/chefs/search-chef.php');
+            require_once('views/food/search-food.php');
             break;
         }
 
         default:{
-            require_once('views/chefs/list.php');
+            require_once('views/food/list.php');
             break;
         }
     }
