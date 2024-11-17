@@ -1,4 +1,4 @@
-<?php include('menu.php');?>
+<?php include('../menu.php');?>
 <div class="main-content">
     <div class="wrapper">
         <h3>edit food</h3>
@@ -73,4 +73,4 @@
         </form>
     </div>
 </div> 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

@@ -1,4 +1,4 @@
-<?php include('menu.php'); ?>
+<?php include('../menu.php'); ?>
         <!-- main content section starts-->
         <div class="main-content">
             <div class="wrapper">
@@ -74,4 +74,4 @@
             </div>
         </div>
         <!-- main content section ends-->
-<?php include('footer.php'); ?>
+<?php include('../footer.php'); ?>

@@ -47,6 +47,19 @@
             return $data;
         }
 
+        public function getAllDataForFront($tbl) {
+            $sql = "SELECT * FROM $tbl LIMIT 3";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
         public function getDataFromID($tbl, $id) {
             $sql = "SELECT * FROM $tbl WHERE id = $id";
             $this->execute($sql); 

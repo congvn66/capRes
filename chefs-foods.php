@@ -21,15 +21,15 @@
     <div class = "menu text-right">
       <ul>
         <li>
-          <a href="index.html">home</a>
+          <a href="index.php">home</a>
         </li>
 
         <li>
-          <a href="foods.html">foods</a>
+          <a href="foods.php">foods</a>
         </li>
 
         <li>
-          <a href="chefs.html">chefs</a>
+          <a href="chefs.php">chefs</a>
         </li>
 
         <li>
@@ -47,16 +47,13 @@
 
 <!-- food search section starts -->
 <section class = "food-search text-center">
-  <div class = "container">
-    <form action = "food-search.html" method="POST">
-      <input type = "search" name = "search" placeholder = "foodddddddddddd...." required>
-      <input type = "submit" name = "submit" value = "search" class = "button button-primary">
-    </form>
+  <div class="container">
+
+    <h2>Foods of <a href="#" class="text-white">"chef"</a></h2>
+
   </div>
 </section>
 <!-- food search section ends -->
-
-
 
 <!-- menu section starts -->
 <section class = "food-menu">
@@ -76,7 +73,7 @@
         </p>
         <br>
 
-        <a href="order.html" class="button button-primary">order now !</a>
+        <a href="order.php" class="button button-primary">order now !</a>
       </div>
       <div class="clearfix"></div>
     </div>
@@ -176,32 +173,4 @@
 </section>
 <!-- menu section ends -->
 
-<!-- social media section starts -->
-<section class = "social">
-  <div class = "container text-center">
-    <ul>
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/facebook-new.png" alt="facebook-new"/></a>
-      </li>
-
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/instagram-new.png" alt="instagram-new"/></a>
-      </li>
-
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/--tinder.png" alt="--tinder"/></a>
-      </li>
-    </ul>
-  </div>
-</section>
-<!-- social media section ends -->
-
-<!-- footer section starts -->
-<section class = "footer">
-  <div class = "container text-center">
-    <p>capybara. capybared by <a href="#">capybara</a></p>
-  </div>
-</section>
-<!-- footer section ends -->
-</body>
-</html>
+<?php include('partials-front/footer.php'); ?>

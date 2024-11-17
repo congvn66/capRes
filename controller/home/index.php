@@ -6,7 +6,7 @@
     }
     switch($action) {
         default:{
-            require_once('views/home/dashboard.php');
+            require_once('../views/home/dashboard.php');
             break;
         }
     }

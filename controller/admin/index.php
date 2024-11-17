@@ -19,7 +19,7 @@
                     $success[] = 'add-success';
                 }
             }
-            require_once('views/admin/add-admin.php');
+            require_once('../views/admin/add-admin.php');
             break;
         }
         case 'edit':{
@@ -39,7 +39,7 @@
                     }
                 }
             }
-            require_once('views/admin/edit-admin.php');
+            require_once('../views/admin/edit-admin.php');
             break;
         }
         case 'delete':{
@@ -61,7 +61,7 @@
             $tbl = "admin";
             $data = [];
             $data = $db->getAllData($tbl);
-            require_once('views/admin/list.php');
+            require_once('../views/admin/list.php');
             break;  
         }
         
@@ -73,12 +73,12 @@
                 $dataSearch = [];
                 $dataSearch = $db->searchAdmin($tbl, $key);
             }
-            require_once('views/admin/search-admin.php');
+            require_once('../views/admin/search-admin.php');
             break;
         }
 
         default:{
-            require_once('views/admin/list.php');
+            require_once('../views/admin/list.php');
             break;
         }
     }

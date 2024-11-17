@@ -45,7 +45,7 @@
                     $success[] = 'add-success';
                 }
             }
-            require_once('views/food/add-food.php');
+            require_once('../views/food/add-food.php');
             break;
         }
         case 'edit':{
@@ -99,7 +99,7 @@
                     }
                 }
             }
-            require_once('views/food/edit-food.php');
+            require_once('../views/food/edit-food.php');
             break;
         }
         case 'delete':{
@@ -121,7 +121,7 @@
             $tbl = "food";
             $data = [];
             $data = $db->getAllData($tbl);
-            require_once('views/food/list.php');
+            require_once('../views/food/list.php');
             break;  
         }
         
@@ -133,12 +133,12 @@
                 $dataSearch = [];
                 $dataSearch = $db->searchFood($tbl, $key);
             }
-            require_once('views/food/search-food.php');
+            require_once('../views/food/search-food.php');
             break;
         }
 
         default:{
-            require_once('views/food/list.php');
+            require_once('../views/food/list.php');
             break;
         }
     }

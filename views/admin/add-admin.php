@@ -1,4 +1,4 @@
-<?php include('menu.php');?>
+<?php include('../menu.php');?>
 <div class="main-content">
     <div class="wrapper">
         <h3>add new admin</h3>
@@ -30,4 +30,4 @@
         ?>
     </div>
 </div> 
-<?php include('footer.php');?>
+<?php include('../footer.php');?>

@@ -1,49 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <!--Responsive website-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>capy restaurant</title>
-
-  <!-- link css file -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-<!-- navigation bar starts -->
-<section class = "navbar">
-  <div class = "container">
-    <div class = "logo">
-      <img src="./images/logo.png" alt = "restaurant logo" class="img-responsive">
-    </div>
-
-    <div class = "menu text-right">
-      <ul>
-        <li>
-          <a href="index.html">home</a>
-        </li>
-
-        <li>
-          <a href="foods.html">foods</a>
-        </li>
-
-        <li>
-          <a href="chefs.html">chefs</a>
-        </li>
-
-        <li>
-          <a href="#">contact us</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class = "clearfix">
-
-    </div>
-  </div>
-</section>
-<!-- navigation bar ends -->
+<?php include('partials-front/menu.php'); ?>
 
 <!-- food search section starts -->
 <section class = "food-search text-center">
@@ -104,32 +59,4 @@
 <!-- food search section ends -->
 
 
-<!-- social media section starts -->
-<section class = "social">
-  <div class = "container text-center">
-    <ul>
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/facebook-new.png" alt="facebook-new"/></a>
-      </li>
-
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/instagram-new.png" alt="instagram-new"/></a>
-      </li>
-
-      <li>
-        <a href="#"><img width="48" height="48" src="https://img.icons8.com/doodle/48/--tinder.png" alt="--tinder"/></a>
-      </li>
-    </ul>
-  </div>
-</section>
-<!-- social media section ends -->
-
-<!-- footer section starts -->
-<section class = "footer">
-  <div class = "container text-center">
-    <p>capybara. capybared by <a href="#">capybara</a></p>
-  </div>
-</section>
-<!-- footer section ends -->
-</body>
-</html>
+<?php include('partials-front/footer.php'); ?>

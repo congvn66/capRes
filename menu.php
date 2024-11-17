@@ -2,7 +2,7 @@
     <head>
         <title>capy-restaurant home page</title>
 
-        <link rel="stylesheet" href="css/admin.css">
+        <link rel="stylesheet" href="../css/admin.css">
     </head>
 
     <body>

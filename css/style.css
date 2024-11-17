@@ -83,10 +83,14 @@ h3 {
 }
 
 .float-text {
-    position: absolute;
-    bottom: 50px;
-    left: 38%;
+    position: relative; /* Changed to relative for proper placement */
+    margin: 20px auto; /* Center align text in its container */
+    text-align: center; /* Ensure the text is centered */
+    font-size: 18px; /* Adjust font size for better visibility */
+    color: #130f40; /* Ensures it uses the amazingColor */
 }
+
+
 
 .img-curve {
     border-radius: 15px;

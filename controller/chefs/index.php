@@ -10,7 +10,7 @@
 
     switch($action) {
         case 'add':{
-            if(isset($_POST['add-food'])){
+            if(isset($_POST['add-chef'])){
                 $chef_name = $_POST['chef_name'];
                 $salary = $_POST['salary'];
                 if (isset($_FILES['image']['name'])) {
@@ -38,8 +38,10 @@
                 if($db->insertDataChef($chef_name, $salary, $image_name)) {
                     $success[] = 'add-success';
                 }
+            } else {
+                //echo "nah";
             }
-            require_once('views/chefs/add-chef.php');
+            require_once('../views/chefs/add-chef.php');
             break;
         }
         case 'edit':{
@@ -87,7 +89,7 @@
                     }
                 }
             }
-            require_once('views/chefs/edit-chef.php');
+            require_once('../views/chefs/edit-chef.php');
             break;
         }
         case 'delete':{
@@ -109,7 +111,7 @@
             $tbl = "chef";
             $data = [];
             $data = $db->getAllData($tbl);
-            require_once('views/chefs/list.php');
+            require_once('../views/chefs/list.php');
             break;  
         }
         
@@ -121,12 +123,12 @@
                 $dataSearch = [];
                 $dataSearch = $db->searchChef($tbl, $key);
             }
-            require_once('views/chefs/search-chef.php');
+            require_once('../views/chefs/search-chef.php');
             break;
         }
 
         default:{
-            require_once('views/chefs/list.php');
+            require_once('../views/chefs/list.php');
             break;
         }
     }
