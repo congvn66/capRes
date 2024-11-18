@@ -47,8 +47,21 @@
             return $data;
         }
 
-        public function getAllDataForFront($tbl) {
+        public function getAllDataForFrontChef($tbl) {
             $sql = "SELECT * FROM $tbl LIMIT 3";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function getAllDataForFrontFood($tbl) {
+            $sql = "SELECT * FROM $tbl LIMIT 6";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;
@@ -103,19 +116,36 @@
         }
 
         public function insertDataAdmin($full_name, $username, $password) {
-            $sql = "INSERT INTO admin(id, full_name, username, password)VALUES(null, '$full_name', '$username', '$password')";
+            $full_name = mysqli_real_escape_string($this->conn, $full_name);
+            $username = mysqli_real_escape_string($this->conn, $username);
+            $password = mysqli_real_escape_string($this->conn, $password);
+        
+            $sql = "INSERT INTO admin(id, full_name, username, password)
+                    VALUES(null, '$full_name', '$username', '$password')";
             return $this->execute($sql);
         }
+        
 
         public function insertDataChef($chef_name, $salary, $image_name) {
-            $sql = "INSERT INTO chef(chef_id, chef_name, salary, image_name)VALUES(null, '$chef_name', $salary, '$image_name')";
-            return $this->execute($sql);
+            $stmt = $this->conn->prepare(
+                "INSERT INTO chef(chef_id, chef_name, salary, image_name)
+                VALUES (null, ?, ?, ?)"
+            );
+            $stmt->bind_param("sds", $chef_name, $salary, $image_name);
+            return $stmt->execute();
         }
+        
 
         public function insertDataFood($food_name, $price, $chef_id, $image_name, $description) {
-            $sql = "INSERT INTO food(food_id, name, price, chef_id, image_name, description)VALUES(null, '$food_name', $price, '$chef_id', '$image_name', '$description')";
+            $food_name = mysqli_real_escape_string($this->conn, $food_name);
+            $image_name = mysqli_real_escape_string($this->conn, $image_name);
+            $description = mysqli_real_escape_string($this->conn, $description);
+        
+            $sql = "INSERT INTO food(food_id, name, price, chef_id, image_name, description)
+                    VALUES(null, '$food_name', $price, '$chef_id', '$image_name', '$description')";
             return $this->execute($sql);
         }
+        
         
         public function updateDataAdmin($id, $full_name, $username, $password) {
             $sql = "UPDATE admin SET full_name = '$full_name', username = '$username', password = '$password' WHERE id = '$id'";

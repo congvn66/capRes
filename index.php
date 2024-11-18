@@ -1,6 +1,7 @@
 <?php 
 include('partials-front/menu.php');
 include('data-access-front/fetch-chefs.php');
+include('data-access-front/fetch-foods.php');
 ?>
 
     <!-- food search section starts -->
@@ -22,7 +23,7 @@ include('data-access-front/fetch-chefs.php');
             <?php
                 if ($chefs != 0) {
                     foreach($chefs as $chef) {
-                        $id = $chef['chef_id'];
+                        $id_chef = $chef['chef_id'];
                         $chef_name = $chef['chef_name'];
                         $img_name = $chef['image_name'];
                         ?>
@@ -58,23 +59,49 @@ include('data-access-front/fetch-chefs.php');
         <div class = "container">
             <h2 class="text-center">Explore foods</h2>
 
-            <div class = "food-menu-box">
-                <div class="food-menu-img">
-                    <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
-                </div>
+            
+            <?php
+                if ($foods != 0) {
+                    foreach($foods as $food) {
+                        $id_food = $food['food_id'];
+                        $food_name = $food['name'];
+                        $img_name_food = $food['image_name'];
+                        $price = $food['price'];
+                        $description = $food['description'];
+                        ?>
+                        <div class = "food-menu-box">
+                            <div class="food-menu-img">
+                                <?php
+                                    if ($img_name_food == "") {
+                                        echo "<div>no image.</div>";
+                                    } else {
+                                        ?>
+                                        <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
+                                        <?php
+                                    }
+                                ?>
+                                
+                            </div>
 
-                <div class="food-menu-desc">
-                    <h4>margherita pizza</h4>
-                    <p class="food-price">1$</p>
-                    <p class="food-detail">
-                        made with special sauce.
-                    </p>
-                    <br>
+                            <div class="food-menu-desc">
+                                <h4><?php echo $food_name;?></h4>
+                                <p class="food-price">$<?php echo $price;?></p>
+                                <p class="food-detail">
+                                    <?php echo $description; ?>
+                                </p>
+                                <br>
 
-                    <a href="order.php" class="button button-primary">order now !</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+                                <a href="order.php" class="button button-primary">order now !</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<div>no foods found.</div>";
+                }
+            ?>
+            
 
             
             <div class="clearfix"></div>

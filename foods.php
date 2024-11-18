@@ -1,4 +1,6 @@
-<?php include('partials-front/menu.php'); ?>
+<?php include('partials-front/menu.php');
+include('data-access-front/fetch-foods-foods.php');
+?>
 
 <!-- food search section starts -->
 <section class = "food-search text-center">
@@ -15,120 +17,57 @@
 
 <!-- menu section starts -->
 <section class = "food-menu">
-  <div class = "container">
-    <h2 class="text-center">explore foods</h2>
+        <div class = "container">
+            <h2 class="text-center">Explore foods</h2>
 
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
-      </div>
+            
+            <?php
+                if ($foodsFoods != 0) {
+                    foreach($foodsFoods as $food) {
+                        $id_food = $food['food_id'];
+                        $food_name = $food['name'];
+                        $img_name_food = $food['image_name'];
+                        $price = $food['price'];
+                        $description = $food['description'];
+                        ?>
+                        <div class = "food-menu-box">
+                            <div class="food-menu-img">
+                                <?php
+                                    if ($img_name_food == "") {
+                                        echo "<div>no image.</div>";
+                                    } else {
+                                        ?>
+                                        <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
+                                        <?php
+                                    }
+                                ?>
+                                
+                            </div>
 
-      <div class="food-menu-desc">
-        <h4>margherita pizza</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
+                            <div class="food-menu-desc">
+                                <h4><?php echo $food_name;?></h4>
+                                <p class="food-price">$<?php echo $price;?></p>
+                                <p class="food-detail">
+                                    <?php echo $description; ?>
+                                </p>
+                                <br>
 
-        <a href="order.php" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
+                                <a href="order.php" class="button button-primary">order now !</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <?php
+                    }
+                } else {
+                    echo "<div>no foods found.</div>";
+                }
+            ?>
+            
 
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>margherita pizza</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/burger-menu.png" alt="smash burger" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>smash burger</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/burger-menu.png" alt="smash burger" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>smash burger</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/chicken-menu.png" alt="cp's chicken" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>cp's chicken</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/chicken-menu.png" alt="cp's chicken" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>cp's chicken</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class="clearfix"></div>
-  </div>
-</section>
-<!-- menu section ends -->
+            
+            <div class="clearfix"></div>
+        </div>
+    </section>
+    <!-- menu section ends -->
 
 <?php include('partials-front/footer.php'); ?>
