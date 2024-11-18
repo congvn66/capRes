@@ -9,11 +9,11 @@ include('data-access-front/fetch-chefs-chefs.php');
             <?php
                 if ($chefsChefs != 0) {
                     foreach($chefsChefs as $chef) {
-                        $id = $chef['chef_id'];
+                        $id_chef = $chef['chef_id'];
                         $chef_name = $chef['chef_name'];
                         $img_name = $chef['image_name'];
                         ?>
-                        <a href="chefs-foods.php">
+                        <a href="http://localhost/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
                             <div class = "box float-container">
                                 <?php
                                     if ($img_name == "") {

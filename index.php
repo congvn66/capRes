@@ -7,7 +7,7 @@ include('data-access-front/fetch-foods.php');
     <!-- food search section starts -->
     <section class = "food-search text-center">
         <div class = "container">
-            <form action = "food-search.php" method="POST">
+            <form action = "http://localhost/capy-restaurant/food-search.php" method="POST">
                 <input type = "search" name = "search" placeholder = "foodddddddddddd...." required>
                 <input type = "submit" name = "submit" value = "search" class = "button button-primary">
             </form>
@@ -27,7 +27,7 @@ include('data-access-front/fetch-foods.php');
                         $chef_name = $chef['chef_name'];
                         $img_name = $chef['image_name'];
                         ?>
-                        <a href="chefs-foods.php">
+                        <a href="http://localhost/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
                             <div class = "box float-container">
                                 <?php
                                     if ($img_name == "") {
@@ -80,7 +80,6 @@ include('data-access-front/fetch-foods.php');
                                         <?php
                                     }
                                 ?>
-                                
                             </div>
 
                             <div class="food-menu-desc">

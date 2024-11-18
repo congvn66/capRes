@@ -5,7 +5,7 @@ include('data-access-front/fetch-foods-foods.php');
 <!-- food search section starts -->
 <section class = "food-search text-center">
   <div class = "container">
-    <form action = "food-search.php" method="POST">
+    <form action = "http://localhost/capy-restaurant/food-search.php" method="POST">
       <input type = "search" name = "search" placeholder = "foodddddddddddd...." required>
       <input type = "submit" name = "submit" value = "search" class = "button button-primary">
     </form>

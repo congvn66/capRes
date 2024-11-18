@@ -1,55 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <!--Responsive website-->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>capy restaurant</title>
-
-  <!-- link css file -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
-<!-- navigation bar starts -->
-<section class = "navbar">
-  <div class = "container">
-    <div class = "logo">
-      <img src="./images/logo.png" alt = "restaurant logo" class="img-responsive">
-    </div>
-
-    <div class = "menu text-right">
-      <ul>
-        <li>
-          <a href="index.php">home</a>
-        </li>
-
-        <li>
-          <a href="foods.php">foods</a>
-        </li>
-
-        <li>
-          <a href="chefs.php">chefs</a>
-        </li>
-
-        <li>
-          <a href="#">contact us</a>
-        </li>
-      </ul>
-    </div>
-
-    <div class = "clearfix">
-
-    </div>
-  </div>
-</section>
-<!-- navigation bar ends -->
+<?php 
+include('partials-front/menu.php');
+include('data-access-front/chefs-foods.php');
+?>
 
 <!-- food search section starts -->
 <section class = "food-search text-center">
   <div class="container">
 
-    <h2>Foods of <a href="#" class="text-white">"chef"</a></h2>
+    <h2>Foods of <a href="#" class="text-white">"<?php echo $c_name;?>"</a></h2>
 
   </div>
 </section>
@@ -58,116 +16,46 @@
 <!-- menu section starts -->
 <section class = "food-menu">
   <div class = "container">
-    <h2 class="text-center">explore foods</h2>
+    <h2 class="text-center">Explore foods</h2>
+    <?php
+      if($f_list != 0) {
+        foreach($f_list as $f) {
+          $name_cf = $f['name'];
+          $price_cf = $f['price'];
+          $img_name_food_cf = $f['image_name'];
+          $description_cf = $f['description'];
+          ?>
+          <div class = "food-menu-box">
+            <div class="food-menu-img">
+            <?php
+                if ($img_name_food_cf == "") {
+                    echo "<div>no image.</div>";
+                } else {
+                    ?>
+                    <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food_cf; ?>" alt="cant show" class="img-responsive img-curve">
+                    <?php
+                }
+            ?>
+            </div>
 
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
-      </div>
+            <div class="food-menu-desc">
+              <h4><?php echo $name_cf; ?></h4>
+              <p class="food-price">$<?php echo $price_cf; ?></p>
+              <p class="food-detail">
+                <?php echo $description_cf;?>
+              </p>
+              <br>
 
-      <div class="food-menu-desc">
-        <h4>margherita pizza</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="order.php" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>margherita pizza</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/burger-menu.png" alt="smash burger" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>smash burger</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/burger-menu.png" alt="smash burger" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>smash burger</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/chicken-menu.png" alt="cp's chicken" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>cp's chicken</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <div class = "food-menu-box">
-      <div class="food-menu-img">
-        <img src="images/chicken-menu.png" alt="cp's chicken" class="img-responsive img-curve">
-      </div>
-
-      <div class="food-menu-desc">
-        <h4>cp's chicken</h4>
-        <p class="food-price">1$</p>
-        <p class="food-detail">
-          made with special sauce.
-        </p>
-        <br>
-
-        <a href="#" class="button button-primary">order now !</a>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
+              <a href="order.php" class="button button-primary">order now !</a>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <?php
+        }
+      } else {
+        echo "<div>no food for this chef.</div>";
+      }
+    ?>
     <div class="clearfix"></div>
   </div>
 </section>

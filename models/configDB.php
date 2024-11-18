@@ -25,7 +25,6 @@
         }
 
         public function getData() {
-           
             if($this->res) {
                 $data = mysqli_fetch_array($this->res);
             } else {
@@ -48,7 +47,7 @@
         }
 
         public function getAllDataForFrontChef($tbl) {
-            $sql = "SELECT * FROM $tbl LIMIT 3";
+            $sql = "SELECT * FROM $tbl ORDER BY salary LIMIT 3";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;
@@ -72,6 +71,35 @@
             }
             return $data;
         }
+        
+        public function getAllDataForFrontCF($id) {
+   
+            $sql = "SELECT chef_name FROM chef WHERE chef_id = ?";
+            
+      
+            $stmt = $this->conn->prepare($sql);
+            if (!$stmt) {
+                die("Statement preparation failed: " . $this->conn->error);
+            }
+            
+        
+            $stmt->bind_param("i", $id); 
+            
+      
+            $stmt->execute();
+            
+    
+            $result = $stmt->get_result();
+            if ($result->num_rows === 0) {
+                return 0;
+            } else {
+                $row = $result->fetch_assoc();
+                return $row['chef_name'];
+            }
+        }
+        
+        
+
 
         public function getDataFromID($tbl, $id) {
             $sql = "SELECT * FROM $tbl WHERE id = $id";
@@ -191,6 +219,7 @@
             return $data;
         }
 
+        
         public function searchChef($tbl, $key) {
             $sql = "SELECT * FROM $tbl WHERE chef_name REGEXP '$key' ORDER BY chef_id";
             $this->execute($sql);
@@ -205,7 +234,20 @@
         }
 
         public function searchFood($tbl, $key) {
-            $sql = "SELECT * FROM $tbl WHERE name REGEXP '$key' ORDER BY food_id";
+            $sql = "SELECT * FROM $tbl WHERE name REGEXP '$key' OR description REGEXP '$key' ORDER BY food_id";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function searchFoodByChef($chefId) {
+            $sql = "SELECT * FROM food WHERE chef_id = $chefId ORDER BY food_id";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;
