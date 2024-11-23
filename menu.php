@@ -14,7 +14,7 @@
                     <li><a href="index.php?controller=admin&action=list">admin</a></li>
                     <li><a href="index.php?controller=food&action=list">foods</a></li>
                     <li><a href="index.php?controller=chef&action=list">chefs</a></li>
-                    <li><a href="">orders</a></li>
+                    <li><a href="index.php?controller=orders&action=list">orders</a></li>
                     <li><a href="">customers</a></li>
                     <li><a href="">dining tables</a></li>
                     <li><a href="">provides</a></li>

@@ -52,7 +52,7 @@ include('data-access-front/fetch-foods-foods.php');
                                 </p>
                                 <br>
 
-                                <a href="order.php" class="button button-primary">order now !</a>
+                                <a href="http://localhost/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
                             </div>
                             <div class="clearfix"></div>
                         </div>

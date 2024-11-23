@@ -152,6 +152,30 @@
                     VALUES(null, '$full_name', '$username', '$password')";
             return $this->execute($sql);
         }
+
+        public function insertDataOrder($food_id, $qty, $order_date, $status, $customer_id) {
+            $sql = "INSERT INTO orders(id, food_id, qty, order_date, status, customer_id)
+                    VALUES(null, $food_id, $qty, '$order_date', '$status', $customer_id)";
+            if ($this->execute($sql)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function insertDataCustomer($customer_name, $address, $phone, $email) {
+            $customer_name = mysqli_real_escape_string($this->conn, $customer_name);
+            $address = mysqli_real_escape_string($this->conn, $address);
+            //$password = mysqli_real_escape_string($this->conn, $password);
+        
+            $sql = "INSERT INTO customer(customer_id, customer_name, address, phone, waiter_id, email)
+                    VALUES(null, '$customer_name', '$address', $phone, null, '$email')";
+            if ($this->execute($sql)) {
+                return mysqli_insert_id($this->conn);
+            } else {
+                return false;
+            }
+        }
         
 
         public function insertDataChef($chef_name, $salary, $image_name) {
@@ -248,6 +272,19 @@
 
         public function searchFoodByChef($chefId) {
             $sql = "SELECT * FROM food WHERE chef_id = $chefId ORDER BY food_id";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
+        public function searchCustomerByPhone($phone) {
+            $sql = "SELECT * FROM customer WHERE phone = $phone";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;

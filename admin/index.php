@@ -22,6 +22,10 @@
             require_once('../controller/food/index.php');
             break;
         }
+        case 'orders':{
+            require_once('../controller/orders/index.php');
+            break;
+        }
         default:{
             require_once('../controller/home/index.php');
             break;

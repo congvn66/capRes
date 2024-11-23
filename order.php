@@ -1,4 +1,7 @@
-<?php include('partials-front/menu.php'); ?>
+<?php include('partials-front/menu.php');
+include('data-access-front/orders-data.php');
+ 
+?>
 
 <!-- food search section starts -->
 <section class = "food-search text-center">
@@ -6,17 +9,27 @@
 
     <h2 class="text-center text-white">fill this form to confirm your order.</h2>
 
-    <form action="#" class="order">
+    <form action="" method="post" class="order">
       <fieldset>
         <legend>Selected Food</legend>
 
         <div class="food-menu-img">
-          <img src="images/pizza-menu.png" alt="margherita pizza" class="img-responsive img-curve">
+          <?php
+            if ($img_name_order == "") {
+              echo "<div>image not available.</div>";
+            } else {
+              ?>
+              <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_order; ?>" alt="cant show" class="img-responsive img-curve">
+              <?php
+            }
+          ?>
+          
         </div>
 
         <div class="food-menu-desc">
-          <h3>margherita pizza</h3>
-          <p class="food-price">$2.3</p>
+          <h3><?php echo $name_order;?></h3>
+          <input type = "hidden" name ="fid" value="<?php echo $food_id; ?>">
+          <p class="food-price">$<?php echo $price_order; ?></p>
 
           <div class="order-label">Quantity</div>
           <label>
@@ -36,7 +49,7 @@
 
         <div class="order-label">phone number</div>
         <label>
-          <input type="tel" name="contact" placeholder="E.g. 9843xxxxxx" class="input-responsive" required>
+          <input type="tel" name="contact" placeholder="Eg 09xx (if you have ordered more than 1 time, please type the same.)" class="input-responsive" required>
         </label>
 
         <div class="order-label">email</div>
@@ -51,9 +64,9 @@
 
         <input type="submit" name="submit" value="confirm order" class="btn btn-primary">
       </fieldset>
-
+      
     </form>
-
+    <?php include('data-access-front/orders-add.php');?>
   </div>
 </section>
 <!-- food search section ends -->
