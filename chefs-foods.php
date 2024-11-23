@@ -48,7 +48,7 @@ include('data-access-front/chefs-foods.php');
               </p>
               <br>
 
-              <a href="/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
+              <a href="/capy-restaurant/order.php?food_id=<?php echo $f['food_id']; ?>" class="button button-primary">order now !</a>
             </div>
             <div class="clearfix"></div>
           </div>
