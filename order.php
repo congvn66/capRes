@@ -21,7 +21,7 @@ include('data-access-front/orders-data.php');
               <?php
             } else {
               ?>
-              <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_order; ?>" alt="cant show" class="img-responsive img-curve">
+              <img src="<?php echo '/capy-restaurant/'; ?>images/food/<?php echo $img_name_order; ?>" alt="cant show" class="img-responsive img-curve">
               <?php
             }
           ?>

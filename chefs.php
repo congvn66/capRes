@@ -13,7 +13,7 @@ include('data-access-front/fetch-chefs-chefs.php');
                         $chef_name = $chef['chef_name'];
                         $img_name = $chef['image_name'];
                         ?>
-                        <a href="http://localhost/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
+                        <a href="/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
                             <div class = "box float-container">
                                 <?php
                                     if ($img_name == "") {
@@ -22,7 +22,7 @@ include('data-access-front/fetch-chefs-chefs.php');
                                         <?php
                                     } else {
                                         ?>
-                                            <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/chef/<?php echo $img_name; ?>" alt="capy chef 1" class="img-responsive img-curve">
+                                            <img src="<?php echo '/capy-restaurant/'; ?>images/chef/<?php echo $img_name; ?>" alt="capy chef 1" class="img-responsive img-curve">
                                         <?php
                                     }
                                 ?>

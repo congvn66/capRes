@@ -11,9 +11,9 @@
             $img_name_order = $food_data['image_name'];
             
         } else {
-            header('Location: http://localhost/capy-restaurant/');
+            header('Location: /capy-restaurant/');
         }
     } else {
-        header('Location: http://localhost/capy-restaurant/');
+        header('Location: /capy-restaurant/');
     }
 ?>

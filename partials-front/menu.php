@@ -21,15 +21,15 @@
             <div class = "menu text-right">
                 <ul>
                     <li>
-                        <a href="<?php echo 'http://localhost/capy-restaurant/'?>">Home</a>
+                        <a href="<?php echo '/capy-restaurant/'?>">Home</a>
                     </li>
 
                     <li>
-                        <a href="<?php echo 'http://localhost/capy-restaurant/foods.php'?>">Foods</a>
+                        <a href="<?php echo '/capy-restaurant/foods.php'?>">Foods</a>
                     </li>
                     
                     <li>
-                        <a href="<?php echo 'http://localhost/capy-restaurant/chefs.php'?>">Chefs</a>
+                        <a href="<?php echo '/capy-restaurant/chefs.php'?>">Chefs</a>
                     </li>
 
                     <li>

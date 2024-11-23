@@ -34,7 +34,7 @@ include('data-access-front/food-search.php');
                   <?php
                 } else {
                     ?>
-                    <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food_search; ?>" alt="cant show" class="img-responsive img-curve">
+                    <img src="<?php echo '/capy-restaurant/'; ?>images/food/<?php echo $img_name_food_search; ?>" alt="cant show" class="img-responsive img-curve">
                     <?php
                 }
             ?>
@@ -48,7 +48,7 @@ include('data-access-front/food-search.php');
               </p>
               <br>
 
-              <a href="http://localhost/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
+              <a href="/capy-restaurant/order.php?food_id=<?php echo $id_search; ?>" class="button button-primary">order now !</a>
             </div>
 
             <div class="clearfix"></div>
