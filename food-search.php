@@ -29,7 +29,9 @@ include('data-access-front/food-search.php');
             <div class="food-menu-img">
             <?php
                 if ($img_name_food_search == "") {
-                    echo "<div>no image.</div>";
+                  ?>
+                  <img src="/capy-restaurant/images/default-food.png"  alt="Default Image" class="img-responsive img-curve">
+                  <?php
                 } else {
                     ?>
                     <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food_search; ?>" alt="cant show" class="img-responsive img-curve">

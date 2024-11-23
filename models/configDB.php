@@ -47,7 +47,7 @@
         }
 
         public function getAllDataForFrontChef($tbl) {
-            $sql = "SELECT * FROM $tbl ORDER BY salary LIMIT 3";
+            $sql = "SELECT * FROM $tbl ORDER BY salary DESC LIMIT 3";
             $this->execute($sql);
             if ($this->cnt_rows()==0) {
                 $data = 0;
@@ -111,6 +111,8 @@
             }
             return $data;
         }
+
+       
 
         public function cnt_rows(){
             if ($this->res) {
@@ -208,6 +210,10 @@
             $sql = "UPDATE chef SET chef_name = '$chef_name', salary = '$salary', image_name = '$image_name' WHERE chef_id = '$id'";
             return $this->execute($sql);
         }
+        public function updateDataOrder($qty, $status, $id){
+            $sql = "UPDATE orders SET qty = $qty, status = '$status' WHERE id = $id";
+            return $this->execute($sql);
+        }
 
         public function updateDataFood($id, $food_name, $price, $image_name, $chefId, $description) {
             $sql = "UPDATE food SET name = '$food_name', price = '$price', chef_id = $chefId, image_name = '$image_name', description = '$description' WHERE food_id = '$id'";
@@ -270,6 +276,19 @@
             return $data;
         }
 
+        public function searchCustomerOrders($tbl, $id) {
+            $sql = "SELECT * FROM $tbl WHERE customer_id = $id ORDER BY order_date DESC";
+            $this->execute($sql);
+            if ($this->cnt_rows()==0) {
+                $data = 0;
+            } else {
+                while($datas = $this->getData()) {
+                    $data[] = $datas;
+                }
+            }
+            return $data;
+        }
+
         public function searchFoodByChef($chefId) {
             $sql = "SELECT * FROM food WHERE chef_id = $chefId ORDER BY food_id";
             $this->execute($sql);
@@ -294,6 +313,12 @@
                 }
             }
             return $data;
+        }
+
+        public function cntTblRow($tbl) {
+            $sql = "SELECT * FROM $tbl";
+            $this->execute($sql);
+            return $this->cnt_rows();
         }
     }
 ?>

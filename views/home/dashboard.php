@@ -5,27 +5,27 @@
                 <h1>dashboard</h1>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $admin;?></h1>
+                    <br />    
+                    admins
+                </div>
+
+                <div class="col-11 text-center">
+                    <h1><?php echo $food;?></h1>
+                    <br />    
+                    foods
+                </div>
+
+                <div class="col-11 text-center">
+                    <h1><?php echo $chef;?></h1>
                     <br />    
                     chefs
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $order;?></h1>
                     <br />    
-                    chefs
-                </div>
-
-                <div class="col-11 text-center">
-                    <h1>5</h1>
-                    <br />    
-                    chefs
-                </div>
-
-                <div class="col-11 text-center">
-                    <h1>5</h1>
-                    <br />    
-                    chefs
+                    orders
                 </div>
 
                 <div class="col-11 text-center">

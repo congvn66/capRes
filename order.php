@@ -16,7 +16,9 @@ include('data-access-front/orders-data.php');
         <div class="food-menu-img">
           <?php
             if ($img_name_order == "") {
-              echo "<div>image not available.</div>";
+              ?>
+              <img src="/capy-restaurant/images/default-food.png" width="100px" alt="Default Image">
+              <?php
             } else {
               ?>
               <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_order; ?>" alt="cant show" class="img-responsive img-curve">

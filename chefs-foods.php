@@ -29,7 +29,9 @@ include('data-access-front/chefs-foods.php');
             <div class="food-menu-img">
             <?php
                 if ($img_name_food_cf == "") {
-                    echo "<div>no image.</div>";
+                  ?>
+                  <img src="/capy-restaurant/images/default-food.png" width="100px" alt="Default Image">
+                  <?php
                 } else {
                     ?>
                     <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food_cf; ?>" alt="cant show" class="img-responsive img-curve">
