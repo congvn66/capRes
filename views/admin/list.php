@@ -27,7 +27,7 @@
                 <th>Action</th>
             </tr>
             <?php
-                if (!is_array($data) ) {
+                if (!isset($data) || !is_array($data) || count($data) === 0) {
                     echo "<tr><td colspan='4' style='text-align: center;'>No admins found.</td></tr>";
                 } else {
                     $stt = 1;

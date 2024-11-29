@@ -62,7 +62,7 @@
         case 'list':{
             //$tbl = "admin";
             $data = [];
-            $data = $adminModel->getAllData(AdminModel::TABLE);
+            $data = $adminModel->getAllAdmins();
             require_once('../views/admin/list.php');
             break;  
         }
@@ -73,7 +73,7 @@
                 $tbl = "admin";
                 
                 $dataSearch = [];
-                $dataSearch = $adminModel->searchAdmin($tbl, $key);
+                $dataSearch = $adminModel->searchForAdmin($key);
             }
             require_once('../views/admin/search-admin.php');
             break;

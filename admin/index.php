@@ -31,6 +31,10 @@
             require_once('../controller/orders/index.php');
             break;
         }
+        case 'customer':{
+            require_once('../controller/customer/index.php');
+            break;
+        }
         default:{
             require_once('../controller/home/index.php');
             break;

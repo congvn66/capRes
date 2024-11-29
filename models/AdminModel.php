@@ -40,6 +40,27 @@
             $sql = "UPDATE admin SET full_name = '$full_name', username = '$username', password = '$password' WHERE id = '$id'";
             return $this->_query($sql);
         }
+
+        public function searchForAdmin($key)
+        {
+            $sql = "SELECT * FROM " . self::TABLE . " 
+                    WHERE full_name LIKE '%$key%' 
+                       OR username LIKE '%$key%'";
+        
+           
+            $result = $this->_query($sql);
+        
+         
+            $data = [];
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $data[] = $row;
+                }
+            }
+        
+            return $data;
+        }
+        
         
     }
 ?>

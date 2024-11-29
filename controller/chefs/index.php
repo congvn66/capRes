@@ -1,7 +1,9 @@
 <?php
     //include "models/configDB.php";
     
-    
+    require_once '../models/ChefModel.php';
+
+    $chefModel = new ChefModel();
      if (isset($_GET['action'])){
         $action = $_GET['action'];
     } else {
@@ -35,7 +37,7 @@
                     $image_name = "";
                 }
 
-                if($db->insertDataChef($chef_name, $salary, $image_name)) {
+                if($chefModel->insertDataChef($chef_name, $salary, $image_name)) {
                     $success[] = 'add-success';
                 }
             } else {
@@ -49,7 +51,7 @@
                 $id = $_GET['id'];
                 //$tbl = "chef";
                 $dataOnId = [];
-                $dataOnId = $db->getDataFromIdChef($id);
+                $dataOnId = $chefModel->getChefFromID($id);
 
                 if(isset($_POST['edit-chef'])) {
                     $chef_name = $_POST['chef_name'];
@@ -84,7 +86,7 @@
                         $image_name = $current_image;
                     }
 
-                    if($db->updateDataChef($id, $chef_name, $salary, $image_name)){
+                    if($chefModel->updateDataChef($id, $chef_name, $salary, $image_name)){
                         header('location: index.php?controller=chef&action=list');
                     }
                 }
@@ -98,7 +100,7 @@
                 $id = $_GET['id'];
                 //$tbl = "chef";
 
-                if($db->deleteChef($id)) {
+                if($chefModel->deleteChef($id)) {
                     header('location: index.php?controller=chef&action=list');
                 }
             } else {
@@ -108,9 +110,9 @@
         }
 
         case 'list':{
-            $tbl = "chef";
+            //$tbl = "chef";
             $data = [];
-            $data = $db->getAllData($tbl);
+            $data = $chefModel->getAllChefs();
             require_once('../views/chefs/list.php');
             break;  
         }
@@ -121,7 +123,7 @@
                 $tbl = "chef";
                 
                 $dataSearch = [];
-                $dataSearch = $db->searchChef($tbl, $key);
+                $dataSearch = $chefModel->searchForChef($key);
             }
             require_once('../views/chefs/search-chef.php');
             break;

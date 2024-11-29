@@ -1,33 +1,59 @@
 <?php
-require_once 'Database.php';
+    require_once 'BaseModel.php';
 
-class ChefModel extends Database {
-    public function getAllChefs() {
-        $sql = "SELECT * FROM chef";
-        $result = $this->execute($sql);
-        $data = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
+    class ChefModel extends BaseModel {
+        const TABLE = 'chef';
+
+        public function insertDataChef($chef_name, $salary, $image_name) {
+            $chef_name = mysqli_real_escape_string($this->conn, $chef_name);
+            $salary = mysqli_real_escape_string($this->conn, $salary);
+            $image_name = mysqli_real_escape_string($this->conn, $image_name);
+        
+            $sql = "INSERT INTO chef(chef_id, chef_name, salary, image_name)
+                    VALUES(null, '$chef_name', $salary, '$image_name')";
+            return $this->_query($sql);
         }
-        return $data;
-    }
 
-    public function insertChef($chef_name, $salary, $image_name) {
-        $stmt = $this->prepare("INSERT INTO chef (chef_id, chef_name, salary, image_name) VALUES (NULL, ?, ?, ?)");
-        $stmt->bind_param("sds", $chef_name, $salary, $image_name);
-        return $stmt->execute();
-    }
+        public function deleteChef($id) {
+            $sql = "DELETE FROM " . self::TABLE . " WHERE chef_id = $id";
+            return $this->_query($sql);
+        }
+    
+        public function getAllChefs() {
+            return $this->getAllData(self::TABLE);
+        }
+    
+        public function countAdmins() {
+            return $this->cntTblRow(self::TABLE);
+        }
 
-    public function updateChef($id, $chef_name, $salary, $image_name) {
-        $sql = "UPDATE chef SET chef_name = '$chef_name', salary = $salary, image_name = '$image_name' WHERE chef_id = $id";
-        return $this->execute($sql);
-    }
+        public function getChefFromID($id) {
+            $sql = "SELECT * FROM " . self::TABLE . " WHERE chef_id = $id";
+            $result = $this->_query($sql);
+            if ($result) {
+                return mysqli_fetch_assoc($result);
+            }
+            return null; 
+        }
 
-    public function deleteChef($id) {
-        $sql = "DELETE FROM chef WHERE chef_id = $id";
-        return $this->execute($sql);
+        public function updateDataChef($id, $chef_name, $salary, $image_name) {
+            $sql = "UPDATE chef SET chef_name = '$chef_name', salary = '$salary', image_name = '$image_name' WHERE chef_id = '$id'";
+            return $this->_query($sql);
+        }
+
+        public function searchForChef($key)
+        {
+            $sql = "SELECT * FROM " . self::TABLE . " 
+                    WHERE chef_name LIKE '%$key%'";
+            $result = $this->_query($sql);
+            $data = [];
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    $data[] = $row;
+                }
+            }
+        
+            return $data;
+        }
     }
-}
 ?>

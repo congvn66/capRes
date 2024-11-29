@@ -1,7 +1,7 @@
 <?php
     class BaseModel extends Database {
         protected $conn;
-        protected $res;
+  
 
         public function __construct()
         {
@@ -28,15 +28,6 @@
         
         public function _query($sql) {
            return mysqli_query($this->conn, $sql);
-        }
-
-        public function cnt_rows(){
-            if ($this->res) {
-                $num = mysqli_num_rows($this->res);
-            } else {
-                $num = 0;
-            }
-            return $num;
         }
         
     }
