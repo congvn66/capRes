@@ -1,31 +1,45 @@
 <?php
-require_once 'Database.php';
+    require_once 'BaseModel.php';
 
-class AdminModel extends Database {
-    public function insertAdmin($full_name, $username, $password) {
-        $stmt = $this->prepare("INSERT INTO admin (full_name, username, password) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $full_name, $username, $password);
-        return $stmt->execute();
-    }
+    class AdminModel extends BaseModel { 
+        const TABLE = 'admin';
 
-    public function updateAdmin($id, $full_name, $username, $password) {
-        $stmt = $this->prepare("UPDATE admin SET full_name = ?, username = ?, password = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $full_name, $username, $password, $id);
-        return $stmt->execute();
-    }
+        public function insertDataAdmin($full_name, $username, $password) {
+            $full_name = mysqli_real_escape_string($this->conn, $full_name);
+            $username = mysqli_real_escape_string($this->conn, $username);
+            $password = mysqli_real_escape_string($this->conn, $password);
+        
+            $sql = "INSERT INTO admin(id, full_name, username, password)
+                    VALUES(null, '$full_name', '$username', '$password')";
+            return $this->_query($sql);
+        }
 
-    public function deleteAdmin($id) {
-        $stmt = $this->prepare("DELETE FROM admin WHERE id = ?");
-        $stmt->bind_param("i", $id);
-        return $stmt->execute();
+        public function deleteAdmin($id) {
+            $sql = "DELETE FROM " . self::TABLE . " WHERE id = $id";
+            return $this->_query($sql);
+        }
+    
+        public function getAllAdmins() {
+            return $this->getAllData(self::TABLE);
+        }
+    
+        public function countAdmins() {
+            return $this->cntTblRow(self::TABLE);
+        }
+
+        public function getAdminFromID($id) {
+            $sql = "SELECT * FROM " . self::TABLE . " WHERE id = $id";
+            $result = $this->_query($sql);
+            if ($result) {
+                return mysqli_fetch_assoc($result);
+            }
+            return null; 
+        }
+
+        public function updateDataAdmin($id, $full_name, $username, $password) {
+            $sql = "UPDATE admin SET full_name = '$full_name', username = '$username', password = '$password' WHERE id = '$id'";
+            return $this->_query($sql);
+        }
+        
     }
-    public function searchAdmin($key) {
-        $stmt = $this->prepare("SELECT * FROM admin WHERE full_name LIKE ? ORDER BY id");
-        $key = "%$key%";
-        $stmt->bind_param("s", $key);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-}
 ?>

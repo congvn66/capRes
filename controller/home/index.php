@@ -1,16 +1,19 @@
 <?php
-    //include '../models/initializeDB.php';
-     if (isset($_GET['action'])){
+    require_once '../models/BaseModel.php';
+
+    $baseModel = new BaseModel();
+
+    if (isset($_GET['action'])){
         $action = $_GET['action'];
     } else {
         $action = '';
     }
     switch($action) {
         default:{
-            $admin = $db->cntTblRow('admin');
-            $food = $db->cntTblRow('food');
-            $chef = $db->cntTblRow('chef');
-            $order = $db->cntTblRow('orders');
+            $admin = $baseModel->cntTblRow('admin');
+            $food = $baseModel->cntTblRow('food');
+            $chef = $baseModel->cntTblRow('chef');
+            $order = $baseModel->cntTblRow('orders');
             require_once('../views/home/dashboard.php');
             break;
         }

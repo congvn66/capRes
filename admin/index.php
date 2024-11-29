@@ -1,8 +1,12 @@
 <?php
-    include '../models/configDB.php';
+    include '../models/Database.php';
 
     $db = new Database;
-    $db->connect();
+    $connection = $db->connect();
+
+    if ($connection === null) {
+        die("Database connection failed. Please check your configuration.");
+    }
 
     if (isset($_GET['controller'])){
         $controller = $_GET['controller'];
