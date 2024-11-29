@@ -18,7 +18,7 @@ include('data-access-front/fetch-foods-foods.php');
 <!-- menu section starts -->
 <section class = "food-menu">
         <div class = "container">
-            <h2 class="text-center">Explore foods</h2>
+            <h2 class="text-center">Explorefoods</h2>
 
             
             <?php
@@ -72,4 +72,4 @@ include('data-access-front/fetch-foods-foods.php');
     </section>
     <!-- menu section ends -->
 
-<?php include('partials-front/footer.php'); ?>
+<?php include('partials-front/footer.php'); ?>    

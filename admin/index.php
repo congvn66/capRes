@@ -1,5 +1,6 @@
 <?php
-    include "../models/configDB.php";
+    include '../models/configDB.php';
+
     $db = new Database;
     $db->connect();
 
