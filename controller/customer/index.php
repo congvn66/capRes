@@ -2,11 +2,11 @@
     //include "models/configDB.php";
     
 
-    require_once '../models/FoodModel.php';
-    require_once '../models/ChefModel.php';
+    require_once '../models/CustomerModel.php';
+    require_once '../models/WaiterModel.php';
 
-    $foodModel = new FoodModel();
-    $chefModel = new ChefModel();
+    $customerModel = new CustomerModel();
+    $waiterModel = new WaiterModel();
     
      if (isset($_GET['action'])){
         $action = $_GET['action'];
@@ -16,42 +16,20 @@
 
     switch($action) {
         case 'add':{
-            $tbl = "chef";
-            $dataOfChefs = [];
-            $dataOfChefs = $chefModel->getAllChefs();
-            if(isset($_POST['add-food'])){
-                $title = $_POST['food_name'];
-                $description = $_POST['description'];
-                $price = $_POST['price'];
-                $chef = $_POST['chef'];
-                //$chefId = $chef['chef_id'];
-                if (isset($_FILES['image']['name'])) {
-                    $image_name = $_FILES['image']['name'];
-                    if($image_name != "") {
-                        $ext_array = explode('.', $image_name);
-                        $ext = end($ext_array);
-                        $image_name = "food_".rand(0000,9999).'.'.$ext;
-                        $source_path = $_FILES['image']['tmp_name'];
-                        $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $image_name;
-    
-                        $upload = move_uploaded_file($source_path, $destination_path);
-    
-                        if (!$upload) {
-                            echo "<p style='color: red;'>Failed to upload image.</p>";
-                            echo "\n";
-                            echo $destination_path;
-                            error_log("Failed to move uploaded file to {$destination_path}");
-                        }
-                    }
-                } else {
-                    $image_name = "";
-                }
+            //$tbl = "chef";
+            $dataOfWaiters = [];
+            $dataOfWaiters = $waiterModel->getAllWaiters();
+            if(isset($_POST['add-customer'])){
+                $customer_name = $_POST['customer_name'];
+                $address = $_POST['address'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
 
-                if($foodModel->insertDataFood($title, $price, $chef, $image_name, $description)) {
+                if($customerModel->insertDataCustomer($customer_name, $address, $phone, $email)) {
                     $success[] = 'add-success';
                 }
             }
-            require_once('../views/food/add-food.php');
+            require_once('../views/customer/add-customer.php');
             break;
         }
         case 'edit':{
@@ -59,92 +37,59 @@
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $dataOnId = [];
-                $dataOnId = $foodModel->getFoodFromID($id);
+                $dataOnId = $customerModel->getCustomerFromID($id);
                 //$tbl = "chef";
-                $dataOfChefs = [];
-                $dataOfChefs = $chefModel->getAllChefs();
+                $dataOfWaiters = [];
+                $dataOfWaiters = $waiterModel->getAllWaiters();
 
-                if(isset($_POST['edit-food'])) {
-                    $food_name = $_POST['name'];
-                    $price = $_POST['price'];
-                    $current_image = $_POST['current_image'];
-                    $description = $_POST['description'];
-                    $chef = $_POST['chef'];
+                if(isset($_POST['edit-customer'])) {
+                    $customer_name = $_POST['customer_name'];
+                    $address = $_POST['address'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['email'];
+                    $waiter_id = $_POST['waiter_id'];
 
-                    if(isset($_FILES['image']['name'])) {
-                        $image_name = $_FILES['image']['name'];
-                        if($image_name != "") {
-                            $ext_array = explode('.', $image_name);
-                            $ext = end($ext_array);
-                            $image_name = "food_".rand(0000,9999).'.'.$ext;
-                            $source_path = $_FILES['image']['tmp_name'];
-                            $destination_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $image_name;
-        
-                            $upload = move_uploaded_file($source_path, $destination_path);
-        
-                            if (!$upload) {
-                                echo "<p style='color: red;'>Failed to upload image.</p>";
-                                echo "\n";
-                                echo $destination_path;
-                                error_log("Failed to move uploaded file to {$destination_path}");
-                            }
-                            if ($current_image != "") {
-                                $remove_path = $_SERVER['DOCUMENT_ROOT'] . "/capy-restaurant/images/food/" . $current_image;
-                                $remove = unlink($remove_path);
-                            }
-                        } else {
-                            $image_name = $current_image;
-                        }
-                    } else {
-                        $image_name = $current_image;
-                    }
-
-
-                    if($foodModel->updateFood($id, $food_name, $price, $image_name, $chef, $description)){
-                        header('location: index.php?controller=food&action=list');
+                    if($customerModel->updateCustomer($id, $customer_name, $address, $waiter_id ,$phone, $email)){
+                        header('location: index.php?controller=customer&action=list');
                     }
                 }
             }
-            require_once('../views/food/edit-food.php');
+            require_once('../views/customer/edit-customer.php');
             break;
         }
         case 'delete':{
-            //require_once('views/admin/delete-admin.php');
             if (isset($_GET['id'])) {
-                $id = $_GET['id'];
-                //$tbl = "chef";
+                $id = $_GET['id'];;
 
-                if($foodModel->deleteFood($id)) {
-                    header('location: index.php?controller=food&action=list');
+                if($customerModel->deleteCustomer($id)) {
+                    header('location: index.php?controller=customer&action=list');
                 }
             } else {
-                header('location: index.php?controller=food&action=list');
+                header('location: index.php?controller=customer&action=list');
             }
             break;
         }
 
         case 'list':{
-            //$tbl = "food";
             $data = [];
-            $data = $foodModel->getAllFoods();
-            require_once('../views/food/list.php');
+            $data = $customerModel->getAllCustomers();
+            require_once('../views/customer/list.php');
             break;  
         }
         
         case 'search':{
             if (isset($_GET['name'])) {
                 $key = $_GET['name'];
-                $tbl = "food";
                 
                 $dataSearch = [];
-                $dataSearch = $foodModel->searchForFood($key);
+                $dataSearch = $customerModel->searchForCustomer($key);
             }
-            require_once('../views/food/search-food.php');
+            require_once('../views/customer/search-customer.php');
             break;
         }
 
         default:{
-            require_once('../views/food/list.php');
+            require_once('../views/customer/list.php');
             break;
         }
     }

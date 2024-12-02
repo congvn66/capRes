@@ -24,7 +24,14 @@
         }
     
         public function getAllCustomers() {
-            return $this->getAllData(self::TABLE);
+            $sql = "SELECT customer.*, waiter.waiter_name FROM customer LEFT JOIN waiter ON customer.waiter_id = waiter.waiter_id";
+            $query = $this->_query($sql);
+
+            $data = [];
+            while ($row = mysqli_fetch_assoc($query)) {
+                array_push($data, $row);
+            }
+            return $data;
         }
     
         public function countCustomers() {
@@ -40,16 +47,15 @@
             return null; 
         }
 
-        public function updateCustomer($id, $customer_name, $address, $phone, $email) {
-            $sql = "UPDATE customer SET customer_name = '$customer_name', address = '$address', chef_id = $chefId, image_name = '$image_name', description = '$description' WHERE food_id = '$id'";
+        public function updateCustomer($id, $customer_name, $address, $waiter_id ,$phone, $email) {
+            $sql = "UPDATE customer SET customer_name = '$customer_name', address = '$address', phone = '$phone', waiter_id = $waiter_id,  email = '$email' WHERE customer_id = $id";
             return $this->_query($sql);
         }
 
-        public function searchForFood($key)
+        public function searchForCustomer($key)
         {
-            $sql = "SELECT * FROM " . self::TABLE . " 
-                    WHERE name LIKE '%$key%'
-                    OR description LIKE '%$key%'";
+            $sql = "SELECT * FROM customer LEFT JOIN waiter ON customer.waiter_id = waiter.waiter_id
+                    WHERE customer_name LIKE '%$key%'";
             $result = $this->_query($sql);
             $data = [];
             if ($result) {

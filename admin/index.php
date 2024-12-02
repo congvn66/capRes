@@ -35,6 +35,18 @@
             require_once('../controller/customer/index.php');
             break;
         }
+        case 'waiter':{
+            require_once('../controller/waiter/index.php');
+            break;
+        }
+        case 'table':{
+            require_once('../controller/table/index.php');
+            break;
+        }
+        case 'supplier':{
+            require_once('../controller/supplier/index.php');
+            break;
+        }
         default:{
             require_once('../controller/home/index.php');
             break;
