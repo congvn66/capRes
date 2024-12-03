@@ -46,8 +46,8 @@
                             <td><?php echo htmlspecialchars($value['waiter_name']); ?></td>
                             <td><?php echo htmlspecialchars($value['email']); ?></td>
                             <td>
-                                <a href="index.php?controller=food&action=edit&id=<?php echo $value['customer_id']; ?>" class="button-secondary"> Edit </a>
-                                <a onclick="return confirm('Are you sure you want to delete?')" href="index.php?controller=food&action=delete&id=<?php echo $value['customer_id']; ?>" class="button-danger"> Delete </a>
+                                <a href="index.php?controller=customer&action=edit&id=<?php echo $value['customer_id']; ?>" class="button-secondary"> Edit </a>
+                                <a onclick="return confirm('Are you sure you want to delete?')" href="index.php?controller=customer&action=delete&id=<?php echo $value['customer_id']; ?>" class="button-danger"> Delete </a>
                             </td>
                         </tr>
                         <?php

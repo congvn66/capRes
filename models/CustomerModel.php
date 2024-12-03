@@ -54,7 +54,7 @@
 
         public function searchForCustomer($key)
         {
-            $sql = "SELECT * FROM customer LEFT JOIN waiter ON customer.waiter_id = waiter.waiter_id
+            $sql = "SELECT customer.*, waiter.waiter_name FROM customer LEFT JOIN waiter ON customer.waiter_id = waiter.waiter_id
                     WHERE customer_name LIKE '%$key%'";
             $result = $this->_query($sql);
             $data = [];

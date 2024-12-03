@@ -47,6 +47,18 @@
             require_once('../controller/supplier/index.php');
             break;
         }
+        case 'ingredient':{
+            require_once('../controller/ingredient/index.php');
+            break;
+        }
+        case 'provide':{
+            require_once('../controller/provide/index.php');
+            break;
+        }
+        case 'account':{
+            require_once('../controller/account/index.php');
+            break;
+        }
         default:{
             require_once('../controller/home/index.php');
             break;

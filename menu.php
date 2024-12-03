@@ -17,11 +17,11 @@
                     <li><a href="index.php?controller=orders&action=list">orders</a></li>
                     <li><a href="index.php?controller=customer&action=list">customers</a></li>
                     <li><a href="index.php?controller=table&action=list">dining tables</a></li>
-                    <li><a href="">provides</a></li>
+                    <li><a href="index.php?controller=provide&action=list">provides</a></li>
                     <li><a href="index.php?controller=supplier&action=list">suppliers</a></li>
                     <li><a href="index.php?controller=waiter&action=list">waiters</a></li>
-                    <li><a href="">ingredients</a></li>
-                    <li><a href="">accounts</a></li>
+                    <li><a href="index.php?controller=ingredient&action=list">ingredients</a></li>
+                    <li><a href="index.php?controller=account&action=list">accounts</a></li>
                 </ul>
             </div>
             

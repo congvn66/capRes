@@ -14,6 +14,13 @@
             $food = $baseModel->cntTblRow('food');
             $chef = $baseModel->cntTblRow('chef');
             $order = $baseModel->cntTblRow('orders');
+            $customer = $baseModel->cntTblRow('customer');
+            $diningtbl = $baseModel->cntTblRow('diningtable');
+            $provide = $baseModel->cntTblRow('provides');
+            $supplier = $baseModel->cntTblRow('supplier');
+            $waiter = $baseModel->cntTblRow('waiter');
+            $ingredient = $baseModel->cntTblRow('ingredient');
+            $account = $baseModel->cntTblRow('account');
             require_once('../views/home/dashboard.php');
             break;
         }
