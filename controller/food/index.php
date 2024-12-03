@@ -1,6 +1,12 @@
 <?php
     //include "models/configDB.php";
     
+
+    require_once '../models/FoodModel.php';
+    require_once '../models/ChefModel.php';
+
+    $foodModel = new FoodModel();
+    $chefModel = new ChefModel();
     
      if (isset($_GET['action'])){
         $action = $_GET['action'];
@@ -12,7 +18,7 @@
         case 'add':{
             $tbl = "chef";
             $dataOfChefs = [];
-            $dataOfChefs = $db->getAllData($tbl);
+            $dataOfChefs = $chefModel->getAllChefs();
             if(isset($_POST['add-food'])){
                 $title = $_POST['food_name'];
                 $description = $_POST['description'];
@@ -41,7 +47,7 @@
                     $image_name = "";
                 }
 
-                if($db->insertDataFood($title, $price, $chef, $image_name, $description)) {
+                if($foodModel->insertDataFood($title, $price, $chef, $image_name, $description)) {
                     $success[] = 'add-success';
                 }
             }
@@ -53,10 +59,10 @@
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
                 $dataOnId = [];
-                $dataOnId = $db->getDataFromIdFood($id);
-                $tbl = "chef";
+                $dataOnId = $foodModel->getFoodFromID($id);
+                //$tbl = "chef";
                 $dataOfChefs = [];
-                $dataOfChefs = $db->getAllData($tbl);
+                $dataOfChefs = $chefModel->getAllChefs();
 
                 if(isset($_POST['edit-food'])) {
                     $food_name = $_POST['name'];
@@ -94,7 +100,7 @@
                     }
 
 
-                    if($db->updateDataFood($id, $food_name, $price, $image_name, $chef, $description)){
+                    if($foodModel->updateFood($id, $food_name, $price, $image_name, $chef, $description)){
                         header('location: index.php?controller=food&action=list');
                     }
                 }
@@ -108,7 +114,7 @@
                 $id = $_GET['id'];
                 //$tbl = "chef";
 
-                if($db->deleteFood($id)) {
+                if($foodModel->deleteFood($id)) {
                     header('location: index.php?controller=food&action=list');
                 }
             } else {
@@ -118,9 +124,9 @@
         }
 
         case 'list':{
-            $tbl = "food";
+            //$tbl = "food";
             $data = [];
-            $data = $db->getAllData($tbl);
+            $data = $foodModel->getAllFoods();
             require_once('../views/food/list.php');
             break;  
         }
@@ -131,7 +137,7 @@
                 $tbl = "food";
                 
                 $dataSearch = [];
-                $dataSearch = $db->searchFood($tbl, $key);
+                $dataSearch = $foodModel->searchForFood($key);
             }
             require_once('../views/food/search-food.php');
             break;

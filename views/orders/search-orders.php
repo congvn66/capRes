@@ -23,7 +23,8 @@
                 <th>Quantity</th>
                 <th>Order Date</th>
                 <th>Status</th>
-                <th>Customer ID</th>
+                <th>Customer's ID</th>
+                <th>Customer's name</th>
                 <th>Action</th>
             </tr>
             <?php
@@ -40,6 +41,7 @@
                 <td><?php echo htmlspecialchars($value['order_date']); ?></td>
                 <td><?php echo htmlspecialchars($value['status']); ?></td>
                 <td><?php echo htmlspecialchars($value['customer_id']); ?></td>
+                <td><?php echo htmlspecialchars($value['customer_name']); ?></td>
                 <td>
                     <a href="index.php?controller=orders&action=edit&id=<?php echo $value['id']; ?>" class="button-secondary"> Edit </a>
                     <a onclick="return confirm('Are you sure you want to delete?')" href="index.php?controller=orders&action=delete&id=<?php echo $value['id']; ?>" class="button-danger"> Delete </a>

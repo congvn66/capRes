@@ -29,45 +29,45 @@
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $customer;?></h1>
                     <br />    
-                    chefs
+                    customers
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $diningtbl;?></h1>
                     <br />    
-                    chefs
+                    dinning tables
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $provide;?></h1>
                     <br />    
-                    chefs
+                    provides
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $supplier;?></h1>
                     <br />    
-                    chefs
+                    suppliers
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $waiter;?></h1>
                     <br />    
-                    chefs
+                    waiters
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $ingredient;?></h1>
                     <br />    
-                    chefs
+                    ingredients
                 </div>
 
                 <div class="col-11 text-center">
-                    <h1>5</h1>
+                    <h1><?php echo $account;?></h1>
                     <br />    
-                    chefs
+                    accounts
                 </div>
 
                 <div class="clearfix"></div>

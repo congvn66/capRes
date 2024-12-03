@@ -1,4 +1,8 @@
 <?php
+    require_once '../models/OrderModel.php';
+
+    $orderModel = new OrderModel();
+
     if(isset($_GET['action'])) {
         $action = $_GET['action'];
     } else {
@@ -9,15 +13,15 @@
         case 'edit':{
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $tbl = "orders";
+                //$tbl = "orders";
                 $dataOnId = [];
-                $dataOnId = $db->getDataFromID($tbl, $id);
+                $dataOnId = $orderModel->getOrderFromID($id);
 
                if (isset($_POST['edit-orders'])) {
                     $id = $_POST['id'];
                     $qty = $_POST['qty'];
                     $status = $_POST['status'];
-                    if ($db->updateDataOrder($qty, $status, $id)) {
+                    if ($orderModel->updateDataOrder($qty, $status, $id)) {
                         header('location: index.php?controller=orders&action=list');
                     }
                }
@@ -25,20 +29,34 @@
             require_once('../views/orders/edit-orders.php');
             break; 
         }
+        case 'delete':{
+            //require_once('views/admin/delete-admin.php');
+            if (isset($_GET['id'])) {
+                $id = $_GET['id'];
+                //$tbl = "chef";
+
+                if($orderModel->deleteOrder($id)) {
+                    header('location: index.php?controller=orders&action=list');
+                }
+            } else {
+                header('location: index.php?controller=orders&action=list');
+            }
+            break;
+        }
         case 'list':{
-            $tbl = "orders";
+            //$tbl = "orders";
             $data = [];
-            $data = $db->getAllData($tbl);
+            $data = $orderModel->getAllOrders();
             require_once('../views/orders/list.php');
             break; 
         }
         case 'search':{
-            if (isset($_GET['cus_id'])) {
-                $cus_id = $_GET['cus_id'];
-                $tbl = "orders";
+            if (isset($_GET['cus_name'])) {
+                $cus_name = $_GET['cus_name'];
+                //$tbl = "orders";
                 
                 $dataSearch = [];
-                $dataSearch = $db->searchCustomerOrders($tbl, $cus_id);
+                $dataSearch = $orderModel->searchOrders($cus_name);
             }
             require_once('../views/orders/search-orders.php');
             break;

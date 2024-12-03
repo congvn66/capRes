@@ -8,7 +8,7 @@
                 <table>
                     <tr>
                         <input type="hidden" name="controller" value="orders">
-                        <td><input type="text" name="cus_id" placeholder="Type customer's ID" class="search-input"></td>
+                        <td><input type="text" name="cus_name" placeholder="Type customer's name" class="search-input"></td>
                         <td><input type="submit" value="Search" class="search-btn"></td>
                     </tr>
                 </table>
@@ -24,6 +24,7 @@
                 <th>Order Date</th>
                 <th>Status</th>
                 <th>Customer ID</th>
+                <th>Customer's name</th>
                 <th>Action</th>
             </tr>
             <?php
@@ -40,6 +41,7 @@
                 <td><?php echo htmlspecialchars($value['order_date']); ?></td>
                 <td><?php echo htmlspecialchars($value['status']); ?></td>
                 <td><?php echo htmlspecialchars($value['customer_id']); ?></td>
+                <td><?php echo htmlspecialchars($value['customer_name']); ?></td>
                 <td>
                     <a href="index.php?controller=orders&action=edit&id=<?php echo $value['id']; ?>" class="button-secondary"> Edit </a>
                     <a onclick="return confirm('Are you sure you want to delete?')" href="index.php?controller=orders&action=delete&id=<?php echo $value['id']; ?>" class="button-danger"> Delete </a>

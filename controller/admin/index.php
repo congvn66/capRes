@@ -1,5 +1,7 @@
 <?php
-    //include "models/configDB.php";
+    require_once '../models/AdminModel.php';
+
+    $adminModel = new AdminModel();
     
     
      if (isset($_GET['action'])){
@@ -15,7 +17,7 @@
                 $username = $_POST['username'];
                 $password = $_POST['password'];
 
-                if($db->insertDataAdmin($full_name, $username, $password)) {
+                if($adminModel->insertDataAdmin($full_name, $username, $password)) {
                     $success[] = 'add-success';
                 }
             }
@@ -25,16 +27,16 @@
         case 'edit':{
             if(isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $tbl = "admin";
+                //$tbl = "admin";
                 $dataOnId = [];
-                $dataOnId = $db->getDataFromID($tbl, $id);
+                $dataOnId = $adminModel->getAdminFromID($id);
 
                 if(isset($_POST['edit-admin'])) {
                     $full_name = $_POST['full_name'];
                     $username = $_POST['username'];
                     $password = $_POST['password'];
 
-                    if($db->updateDataAdmin($id, $full_name, $username, $password)){
+                    if($adminModel->updateDataAdmin($id, $full_name, $username, $password)){
                         header('location: index.php?controller=admin&action=list');
                     }
                 }
@@ -46,9 +48,9 @@
             //require_once('views/admin/delete-admin.php');
             if (isset($_GET['id'])) {
                 $id = $_GET['id'];
-                $tbl = "admin";
+                //$tbl = "admin";
 
-                if($db->delete($id, $tbl)) {
+                if($adminModel->deleteAdmin($id)) {
                     header('location: index.php?controller=admin&action=list');
                 }
             } else {
@@ -58,9 +60,9 @@
         }
 
         case 'list':{
-            $tbl = "admin";
+            //$tbl = "admin";
             $data = [];
-            $data = $db->getAllData($tbl);
+            $data = $adminModel->getAllAdmins();
             require_once('../views/admin/list.php');
             break;  
         }
@@ -71,7 +73,7 @@
                 $tbl = "admin";
                 
                 $dataSearch = [];
-                $dataSearch = $db->searchAdmin($tbl, $key);
+                $dataSearch = $adminModel->searchForAdmin($key);
             }
             require_once('../views/admin/search-admin.php');
             break;

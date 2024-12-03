@@ -5,7 +5,7 @@ include('data-access-front/fetch-foods-foods.php');
 <!-- food search section starts -->
 <section class = "food-search text-center">
   <div class = "container">
-    <form action = "http://localhost/capy-restaurant/food-search.php" method="POST">
+    <form action = "/capy-restaurant/food-search.php" method="POST">
       <input type = "search" name = "search" placeholder = "foodddddddddddd...." required>
       <input type = "submit" name = "submit" value = "search" class = "button button-primary">
     </form>
@@ -18,7 +18,7 @@ include('data-access-front/fetch-foods-foods.php');
 <!-- menu section starts -->
 <section class = "food-menu">
         <div class = "container">
-            <h2 class="text-center">Explore foods</h2>
+            <h2 class="text-center">Explorefoods</h2>
 
             
             <?php
@@ -39,7 +39,7 @@ include('data-access-front/fetch-foods-foods.php');
                                         <?php
                                     } else {
                                         ?>
-                                        <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
+                                        <img src="<?php echo '/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
                                         <?php
                                     }
                                 ?>
@@ -54,7 +54,7 @@ include('data-access-front/fetch-foods-foods.php');
                                 </p>
                                 <br>
 
-                                <a href="http://localhost/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
+                                <a href="/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -72,4 +72,4 @@ include('data-access-front/fetch-foods-foods.php');
     </section>
     <!-- menu section ends -->
 
-<?php include('partials-front/footer.php'); ?>
+<?php include('partials-front/footer.php'); ?>    

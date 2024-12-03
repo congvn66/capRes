@@ -5,10 +5,10 @@
         $chef_id_cf = $_GET['chef_id'];
         $c_name = $db->getAllDataForFrontCF($chef_id_cf);
         if ($c_name === 0) {
-            header('Location: http://localhost/capy-restaurant/');
+            header('Location: /capy-restaurant/');
         }
         $f_list = $db->searchFoodByChef($chef_id_cf);
     } else {
-        header('location:'.'http://localhost/capy-restaurant/');
+        header('location:'.'/capy-restaurant/');
     }
 ?>

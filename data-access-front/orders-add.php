@@ -18,11 +18,11 @@
         if ($customerList == 0) {
             $customerId = $db->insertDataCustomer($customer_name, $customer_address, $customer_contact, $customer_email);
             $inserted = $db->insertDataOrder($fid, $qty, $order_date, $status, $customerId);
-            header('Location: http://localhost/capy-restaurant/');
+            header('Location: /capy-restaurant/');
         } else {
             $customerId = $customerList[0]['customer_id'];
             $inserted = $db->insertDataOrder($fid, $qty, $order_date, $status, $customerId);
-            header('Location: http://localhost/capy-restaurant/');
+            header('Location: /capy-restaurant/');
         }
     }
 ?>

@@ -7,7 +7,7 @@ include('data-access-front/fetch-foods.php');
     <!-- food search section starts -->
     <section class = "food-search text-center">
         <div class = "container">
-            <form action = "http://localhost/capy-restaurant/food-search.php" method="POST">
+            <form action = "/capy-restaurant/food-search.php" method="POST">
                 <input type = "search" name = "search" placeholder = "foodddddddddddd...." required>
                 <input type = "submit" name = "submit" value = "search" class = "button button-primary">
             </form>
@@ -27,7 +27,7 @@ include('data-access-front/fetch-foods.php');
                         $chef_name = $chef['chef_name'];
                         $img_name = $chef['image_name'];
                         ?>
-                        <a href="http://localhost/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
+                        <a href="/capy-restaurant/chefs-foods.php?chef_id=<?php echo $id_chef;?>">
                             <div class = "box float-container">
                                 <?php
                                     if ($img_name == "") {
@@ -36,7 +36,7 @@ include('data-access-front/fetch-foods.php');
                                         <?php
                                     } else {
                                         ?>
-                                            <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/chef/<?php echo $img_name; ?>" alt="capy chef 1" class="img-responsive img-curve">
+                                            <img src="<?php echo '/capy-restaurant/'; ?>images/chef/<?php echo $img_name; ?>" alt="capy chef 1" class="img-responsive img-curve">
                                         <?php
                                     }
                                 ?>
@@ -80,7 +80,7 @@ include('data-access-front/fetch-foods.php');
                                         <?php
                                     } else {
                                         ?>
-                                        <img src="<?php echo 'http://localhost/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
+                                        <img src="<?php echo '/capy-restaurant/'; ?>images/food/<?php echo $img_name_food; ?>" alt="cant show" class="img-responsive img-curve">
                                         <?php
                                     }
                                 ?>
@@ -94,7 +94,7 @@ include('data-access-front/fetch-foods.php');
                                 </p>
                                 <br>
 
-                                <a href="http://localhost/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
+                                <a href="/capy-restaurant/order.php?food_id=<?php echo $id_food; ?>" class="button button-primary">order now !</a>
                             </div>
                             <div class="clearfix"></div>
                         </div>
