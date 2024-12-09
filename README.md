@@ -20,6 +20,7 @@ Web quản lý nhà hàng, tập trung vào phần quản lý: thêm, sửa, xo�
   - Foods
   - Chefs
   - Orders
+- Làm trang front.
 
 ### Đỗ Trung Đức
 - Mã sinh viên: 23021530
