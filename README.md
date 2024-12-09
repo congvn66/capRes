@@ -13,6 +13,7 @@ Web quản lý nhà hàng, tập trung vào phần quản lý. Phần trang fron
 ## Thành Viên Nhóm
 
 ### Nguyễn Đức Công
+- Mã sinh viên: 23021482
 - Làm trang quản lý:
   - Home
   - Admin
@@ -21,6 +22,7 @@ Web quản lý nhà hàng, tập trung vào phần quản lý. Phần trang fron
   - Orders
 
 ### Đỗ Trung Đức
+- Mã sinh viên: 23021530
 - Làm trang quản lý:
   - Customers
   - Dining Tables
