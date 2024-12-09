@@ -5,7 +5,7 @@
 - **Website Quản Lý**: [capyr.iceiy.com/admin](http://capyr.iceiy.com/admin)
 
 ## Mô Tả
-Web quản lý nhà hàng, tập trung vào phần quản lý. Phần trang front chỉ là phụ, dùng để tìm kiếm và thêm order vào phần quản lý.
+Web quản lý nhà hàng, tập trung vào phần quản lý: thêm, sửa, xoá, thống kê dữ liệu. Phần trang front chỉ là phụ, dùng để tìm kiếm và thêm order vào phần quản lý.
 
 ## Database Schema
 ![Sơ đồ cơ sở dữ liệu](images/dbschema.png)
